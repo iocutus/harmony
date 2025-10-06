@@ -4,7 +4,7 @@ class_name Building extends Area2D
 const BUILDING_TILE_SET = 2
 
 enum ConnectionType {
-	INPUT, OUTPUT
+	INPUT, OUTPUT, SNAP
 }
 
 @export var building_resource: AbstractBuildingResource = null:
@@ -36,6 +36,12 @@ enum ConnectionType {
 @onready var shapeCollisionPolygon: CollisionPolygon2D = %ShapeCollisionPolygon2D
 @onready var inputs: ConnectionManager = %Inputs
 @onready var outputs: ConnectionManager = %Outputs
+
+@export var active_ground_collider: bool:
+	set(value):
+		active_ground_collider = value
+		if is_node_ready():
+			groundCollisionPolygon.disabled = not active_ground_collider && is_active
 
 @export var show_connection_indicators: bool = false:
 	set(value):
@@ -74,7 +80,7 @@ func _process(delta: float) -> void:
 	if production_time >= building_resource.production_time:
 		production_time = 0.0
 		building_resource.produce(input_buffer, output_buffer)
-		
+
 	for connection_tile in outputs.connection_dict:
 		var connection_gate = outputs.connection_dict[connection_tile]
 		var found_elem = output_buffer.consume_first_note_from_buffer(connection_gate.buffer_index)
@@ -84,6 +90,9 @@ func _process(delta: float) -> void:
 
 func _setup_connections(connections: Dictionary[Vector2i, BuildingsUtils.BuildingRotation], connection_type: ConnectionType) -> void:
 	var nodes: Array[Node] = []
+	
+	await get_tree().process_frame
+	
 	match connection_type:
 		ConnectionType.INPUT:
 			inputs.clear()
@@ -91,10 +100,30 @@ func _setup_connections(connections: Dictionary[Vector2i, BuildingsUtils.Buildin
 		ConnectionType.OUTPUT:
 			outputs.clear()
 			nodes = outputs.get_children()
-	
+			
+	if nodes.size() > 0:
+		print("woot3")
+			
 	for node in nodes:
+		print("clear ", nodes.size(), " nodes ", connection_type)
 		node.queue_free()
-					
+		await get_tree().process_frame
+
+	match connection_type:
+		ConnectionType.INPUT:
+			inputs.clear()
+			nodes = inputs.get_children()
+		ConnectionType.OUTPUT:
+			outputs.clear()
+			nodes = outputs.get_children()
+			
+	if nodes.size() > 0:
+		print("woot")
+		
+	if connection_type != ConnectionType.INPUT and connection_type != ConnectionType.OUTPUT:
+		print("woot2")
+
+	await get_tree().process_frame
 	var i: int = -1
 	for connection in connections:
 		i += 1
@@ -103,28 +132,38 @@ func _setup_connections(connections: Dictionary[Vector2i, BuildingsUtils.Buildin
 		var coordinate = BuildingsUtils.rotateTileBy(connection, building_rotation, building_resource.size, ground_size)
 		var rotated_arrow = BuildingsUtils.rotateArrowBy(arrow, building_rotation)
 		connectionIndicators.set_cell(coordinate, BUILDING_TILE_SET, rotated_arrow)
-		_generate_connetion_gate(coordinate, connection_type, i)
+		_generate_connection_gate(coordinate, connection_type, i, rotated_arrow)
 
-func _generate_connetion_gate(tile_coordinate: Vector2i, connection_type: ConnectionType, buffer_index: int) -> void:
+func _generate_connection_gate(tile_coordinate: Vector2i, connection_type: ConnectionType, buffer_index: int, arrow: Vector2i) -> void:
 	var connection_gate_position = background.map_to_local(tile_coordinate)
-	
+
 	var connection_gate: ConnectionGate = connection_scene.instantiate()
 	connection_gate.is_active = is_active
 	connection_gate.mode = connection_type
 	connection_gate.tile_coordinate = tile_coordinate
 	connection_gate.buffer_index = buffer_index
-	
-	connection_gate.incomming.connect(_on_incoming, Object.ConnectFlags.CONNECT_DEFERRED)
+
+	connection_gate.incoming.connect(_on_incoming, Object.ConnectFlags.CONNECT_DEFERRED)
+
+	var offset: Vector2 = Vector2.ZERO
+	var arrow_enum = BuildingsUtils.arrowVectorToRotation(arrow)
 	
 	match connection_type:
 		ConnectionType.INPUT:
 			inputs.add_child(connection_gate)
+			offset = BuildingsUtils.connectionOffset(arrow_enum)
 		ConnectionType.OUTPUT:
 			outputs.add_child(connection_gate)
+			offset = - BuildingsUtils.connectionOffset(arrow_enum)
+	await get_tree().process_frame
+	connection_gate.position = connection_gate_position + offset
 	
-	connection_gate.position = connection_gate_position
+	print("add nodes to ", connection_type)
 
 func _setup_resource() -> void:
+	if background == null:
+		print("skip _setup_resource")
+		return
 	background.clear()
 	foreground.clear()
 	connectionIndicators.clear()
@@ -136,11 +175,11 @@ func _setup_resource() -> void:
 	background.set_cell(Vector2i.ZERO, BUILDING_TILE_SET, atlas_coordinate)
 	var tile_data: TileData = background.get_cell_tile_data(Vector2i.ZERO)
 	var groundPoints: PackedVector2Array = tile_data.get_collision_polygon_points(0, 0)
-	groundCollisionPolygon.polygon = groundPoints
+	groundCollisionPolygon.set_deferred("polygon", groundPoints)
 	var shapePoints: PackedVector2Array = tile_data.get_collision_polygon_points(1, 0)
-	shapeCollisionPolygon.polygon = shapePoints	
+	shapeCollisionPolygon.set_deferred("polygon", shapePoints)
 	label.text = str(building_resource)
-	_setup_connections(building_resource.input_locations, ConnectionType.INPUT)
+	#_setup_connections(building_resource.input_locations, ConnectionType.INPUT)
 	_setup_connections(building_resource.output_locations, ConnectionType.OUTPUT)
 	connectionIndicators.visible = show_connection_indicators
 
@@ -153,8 +192,8 @@ func _handle_active() -> void:
 		background.collision_enabled = is_active
 		modulate_sprite(Color.WHITE)
 		shapeCollisionPolygon.disabled = not is_active
-		groundCollisionPolygon.disabled = is_active
-		
+		groundCollisionPolygon.disabled = not active_ground_collider and is_active
+
 		for input in inputs.get_children():
 			if input is ConnectionGate:
 				input.is_active = is_active

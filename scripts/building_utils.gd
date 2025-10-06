@@ -89,3 +89,19 @@ static func rotationToArrow(rotation: BuildingRotation) -> Vector2i:
 		BuildingRotation.UP: return Tiles.ARROW_UP
 		BuildingRotation.LEFT: return Tiles.ARROW_LEFT
 		_: return Tiles.ARROW_DOWN
+
+static func arrowVectorToRotation(arrow: Vector2i) -> BuildingRotation:
+	match arrow:
+		Tiles.ARROW_DOWN: return BuildingRotation.DOWN
+		Tiles.ARROW_RIGHT: return BuildingRotation.RIGHT
+		Tiles.ARROW_UP: return BuildingRotation.UP
+		Tiles.ARROW_LEFT: return BuildingRotation.LEFT
+		_: return BuildingRotation.DOWN
+
+static func connectionOffset(rotation: BuildingRotation) -> Vector2:
+	match rotation:
+		BuildingRotation.DOWN: return Vector2(0, Tiles.HALF_TILE_PX)
+		BuildingRotation.RIGHT: return Vector2(Tiles.HALF_TILE_PX, 0)
+		BuildingRotation.UP: return Vector2(0, -Tiles.HALF_TILE_PX)
+		BuildingRotation.LEFT: return Vector2(-Tiles.HALF_TILE_PX, 0)
+		_: return Vector2.ZERO

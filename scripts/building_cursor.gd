@@ -1,6 +1,26 @@
+@tool
 class_name BuildingCursor extends Node2D
 
 @onready var building: Building = %Building
+@onready var network_building: Network_Building = %Network_Building
+
+enum Mode {BUILDING, NETWORK}
+
+@export var mode: Mode:
+	set(value):
+		mode = value
+		collider_dict.clear()
+		match mode:
+			Mode.BUILDING:
+				building.show()
+				building.active_ground_collider = true
+				network_building.hide()
+				network_building.active_ground_collider = false
+			Mode.NETWORK:
+				building.hide()
+				building.active_ground_collider = false
+				network_building.show()
+				network_building.active_ground_collider = true
 
 @export var collider_dict: Dictionary[Node2D, int] = {}
 
@@ -29,6 +49,10 @@ func _on_area_exited(area: Area2D) -> void:
 	#print("_on_area_exited: ", area)
 
 func _increment_collider(item: Node2D) -> void:
+	if item == building:
+		return
+	if item == network_building:
+		return
 	if not collider_dict.has(item):
 		collider_dict[item] = 1
 	else:

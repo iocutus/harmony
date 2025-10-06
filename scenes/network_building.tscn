@@ -1,0 +1,60 @@
+[gd_scene load_steps=5 format=3 uid="uid://bokvlvk7hvtmc"]
+
+[ext_resource type="PackedScene" uid="uid://b5mjgreg8l3ap" path="res://scenes/building.tscn" id="1_iloat"]
+[ext_resource type="Script" uid="uid://dlgusr4hm6g00" path="res://scripts/network_building.gd" id="2_o01t0"]
+[ext_resource type="PackedScene" uid="uid://cpedi8rmqle25" path="res://scenes/connection_gate.tscn" id="3_47kel"]
+[ext_resource type="Script" uid="uid://b7sx7bh7fonqi" path="res://scripts/pattern_detector.gd" id="4_xjajh"]
+
+[node name="Building" instance=ExtResource("1_iloat")]
+script = ExtResource("2_o01t0")
+pattern_resource = null
+
+[node name="Label" parent="." index="6"]
+text = "<Resource#-9223369706163844450>"
+
+[node name="Inputs" parent="." index="9" node_paths=PackedStringArray("connection_gate_dict")]
+connection_gate_dict = {
+Vector2i(1, 1): NodePath("Connection")
+}
+
+[node name="Outputs" parent="." index="10" node_paths=PackedStringArray("connection_gate_dict")]
+connection_gate_dict = {
+Vector2i(0, -1): NodePath("Connection"),
+Vector2i(1, -1): NodePath("@Area2D@38093")
+}
+
+[node name="PatternDetector" type="Node2D" parent="." index="11"]
+unique_name_in_owner = true
+script = ExtResource("4_xjajh")
+
+[node name="North" parent="PatternDetector" index="0" instance=ExtResource("3_47kel")]
+unique_name_in_owner = true
+position = Vector2(8, -16)
+collision_layer = 0
+collision_mask = 12
+mode = 2
+tile_coordinate = Vector2i(0, -1)
+
+[node name="East" parent="PatternDetector" index="1" instance=ExtResource("3_47kel")]
+unique_name_in_owner = true
+position = Vector2(16, -8)
+collision_layer = 0
+collision_mask = 12
+mode = 2
+tile_coordinate = Vector2i(1, 0)
+
+[node name="South" parent="PatternDetector" index="2" instance=ExtResource("3_47kel")]
+unique_name_in_owner = true
+position = Vector2(8, 0)
+collision_layer = 0
+collision_mask = 12
+mode = 2
+tile_coordinate = Vector2i(0, 1)
+
+[node name="West" parent="PatternDetector" index="3" instance=ExtResource("3_47kel")]
+unique_name_in_owner = true
+position = Vector2(0, -8)
+collision_layer = 0
+collision_mask = 12
+mode = 2
+tile_coordinate = Vector2i(-1, 0)

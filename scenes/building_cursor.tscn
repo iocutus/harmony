@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://df3luqvourto4"]
+[gd_scene load_steps=5 format=3 uid="uid://df3luqvourto4"]
 
 [ext_resource type="Script" uid="uid://7p5wq6mhfe2l" path="res://scripts/building_cursor.gd" id="1_q70un"]
-[ext_resource type="PackedScene" uid="uid://b5mjgreg8l3ap" path="res://scenes/building_2.tscn" id="2_7hoo1"]
+[ext_resource type="PackedScene" uid="uid://b5mjgreg8l3ap" path="res://scenes/building.tscn" id="2_7hoo1"]
+[ext_resource type="PackedScene" uid="uid://bokvlvk7hvtmc" path="res://scenes/network_building.tscn" id="3_7hoo1"]
+[ext_resource type="Resource" uid="uid://bhesmv2no106x" path="res://resources/building/conveyor_pattern.tres" id="4_jwxli"]
 
 [node name="BuildingCursor" type="Node2D"]
 z_index = 2
@@ -9,3 +11,11 @@ script = ExtResource("1_q70un")
 
 [node name="Building" parent="." instance=ExtResource("2_7hoo1")]
 unique_name_in_owner = true
+visible = false
+
+[node name="Network_Building" parent="." instance=ExtResource("3_7hoo1")]
+unique_name_in_owner = true
+visible = false
+pattern_resource = ExtResource("4_jwxli")
+building_rotation = 0
+active_ground_collider = false

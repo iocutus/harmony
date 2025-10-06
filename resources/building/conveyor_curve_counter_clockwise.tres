@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ConveyorResource" load_steps=2 format=3 uid="uid://cwi3xf6725e0"]
+
+[ext_resource type="Script" uid="uid://r3k6ov28vxkk" path="res://scripts/resource/conveyor_resource.gd" id="1_fapwa"]
+
+[resource]
+resource_name = "Conveyor Curve Counter Clockwise"
+script = ExtResource("1_fapwa")
+name = &"Conveyor Curve Counter Clockwise"
+size = Vector2i(1, 1)
+background_tile = Vector2i(10, 2)
+input_locations = Dictionary[Vector2i, int]({
+Vector2i(1, 0): 3
+})
+output_locations = Dictionary[Vector2i, int]({
+Vector2i(0, 1): 0
+})
+rotation_offset = Array[Vector2i]([Vector2i(-2, -1), Vector2i(0, -1), Vector2i(-2, 0)])
+metadata/_custom_type_script = "uid://r3k6ov28vxkk"

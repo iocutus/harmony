@@ -74,13 +74,15 @@ func _process(delta: float) -> void:
 		return
 
 	match mode:
-		Mode.BUILD:			
+		Mode.BUILD:
 			if Input.is_action_just_pressed(&"rotate_right"):
 				building_cursor.building.building_rotation = BuildingsUtils.rightRotation(building_cursor.building.building_rotation)
+				building_cursor.network_building.building_rotation = BuildingsUtils.rightRotation(building_cursor.network_building.building_rotation)
 				MusicPlayer.play_sfx("ui_click_tsk")
 
 			if Input.is_action_just_pressed(&"rotate_left"):
 				building_cursor.building.building_rotation = BuildingsUtils.leftRotation(building_cursor.building.building_rotation)
+				building_cursor.network_building.building_rotation = BuildingsUtils.leftRotation(building_cursor.network_building.building_rotation)
 				MusicPlayer.play_sfx("ui_click_tsk")
 
 			building_cursor.global_position = snapped_coordinate
@@ -90,24 +92,37 @@ func _process(delta: float) -> void:
 			if building_cursor.collider_dict.size() > 0:
 				# todo:
 				# delete farbe nicht anzeigen, wenn SpaceStation gehovered wird
-						
 				building_cursor.building.modulate_sprite(COLOR_OCCUPIED)
+				building_cursor.network_building.modulate_sprite(COLOR_OCCUPIED)
+				#if Input.is_action_just_pressed(&"ui_click"):
+				#	print("collider")
 				return
 					
-			if building_cursor.building.building_resource is CollectorBuildingResource:
+			if building_cursor.mode == BuildingCursor.Mode.BUILDING and building_cursor.building.building_resource is CollectorBuildingResource:
 				if _borders_note_source(hovered_cell):
 					building_cursor.building.modulate_sprite(COLOR_ADD)
+					building_cursor.network_building.modulate_sprite(COLOR_ADD)
 				else:
 					building_cursor.building.modulate_sprite(COLOR_OCCUPIED)
+					building_cursor.network_building.modulate_sprite(COLOR_OCCUPIED)
 					return
 			else:
 				building_cursor.building.modulate_sprite(COLOR_FREE)
+				building_cursor.network_building.modulate_sprite(COLOR_FREE)
 				
 			if Input.is_action_just_pressed(&"ui_click"):
 				grid_cursor.hide()
 				#var clicked_position: Vector2 = mouse_pos
 				#var clicked_cell: Vector2i = Vector2i(mouse_pos.x / 16, mouse_pos.y / 16)
-				var building = building_cursor.building.duplicate()
+				
+				var building: Building = null
+				
+				match building_cursor.mode:
+					BuildingCursor.Mode.BUILDING:
+						building = building_cursor.building.duplicate()
+					BuildingCursor.Mode.NETWORK:
+						building = building_cursor.network_building.duplicate()
+
 				building.global_position = building_cursor.global_position
 				building.is_active = true
 				place_obstacle.emit(building)
@@ -128,7 +143,7 @@ func _process(delta: float) -> void:
 					building.queue_free()
 		Mode.IDLE:
 			pass
-			
+
 func _borders_note_source(cell: Vector2i) -> bool:
 	for note_cell in note_sources:
 		if note_cell == cell + Vector2i(0, -1):
@@ -144,7 +159,7 @@ func _borders_note_source(cell: Vector2i) -> bool:
 func add_note_source(cell: Vector2i):
 	if note_sources.has(cell):
 		return
-		
+
 	note_sources.append(cell)
 
 func free_buildings() -> void:
@@ -161,5 +176,17 @@ func set_active_transformer_ghost(transformer_resource: AbstractBuildingResource
 	
 	building_cursor.building.building_resource = transformer_resource
 	building_cursor.building.modulate_sprite(COLOR_FREE)
+	building_cursor.network_building.modulate_sprite(COLOR_FREE)
 	building_cursor.building.show_connection_indicators = true
 	mode = Mode.BUILD
+	building_cursor.mode = BuildingCursor.Mode.BUILDING
+	
+func set_active_pattern_transformer_ghost(pattern: BuildingPatternResource) -> void:
+	if !building_cursor:
+		return
+	
+	building_cursor.network_building.pattern_resource = pattern
+	building_cursor.network_building.modulate_sprite(COLOR_FREE)
+	building_cursor.network_building.show_connection_indicators = true
+	mode = Mode.BUILD
+	building_cursor.mode = BuildingCursor.Mode.NETWORK

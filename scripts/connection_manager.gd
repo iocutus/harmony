@@ -22,13 +22,13 @@ func _on_setup(connection_gate: ConnectionGate) -> void:
 func clear() -> void:
 	connection_gate_dict.clear()
 	
-func _add_connection(sourcce: Vector2i, body: Node2D) -> void:
-	print("_add_connection: ", sourcce, " ", body)
+func _add_connection(source: Vector2i, body: Node2D) -> void:
+	print("_add_connection: ", source, " ", body)
 	if body is ConnectionGate:
 		var connection_gate = body as ConnectionGate
-		connection_dict[sourcce] = connection_gate
+		connection_dict[source] = connection_gate
 	
-func _remove_connection(sourcce: Vector2i, body: Node2D) -> void:
-	print("_add_connection: ", sourcce, " ", body)
-	connection_dict.erase(sourcce)
+func _remove_connection(source: Vector2i, body: Node2D) -> void:
+	print("_add_connection: ", source, " ", body)
+	connection_dict.erase(source)
 	

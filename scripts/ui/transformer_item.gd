@@ -1,6 +1,7 @@
 class_name TransformerItem extends PanelContainer
 
 @export var transformer_resource: AbstractBuildingResource
+@export var pattern_resource: BuildingPatternResource
 
 @onready var placement_button: Button = %PlacementButton
 @onready var icon: TextureRect = %Icon
@@ -24,5 +25,8 @@ func _on_transformer_item_mouse_exited() -> void:
 	hover_name.hide()
 	
 func _on_placement_button_pressed() -> void:
-	MapManager.set_active_transformer_ghost(transformer_resource)
+	if pattern_resource:
+		MapManager.set_active_pattern_transformer_ghost(pattern_resource)
+	else:
+		MapManager.set_active_transformer_ghost(transformer_resource)
 	MusicPlayer.play_sfx("ui_click")
