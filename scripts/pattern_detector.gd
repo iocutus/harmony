@@ -70,6 +70,8 @@ func _add_connection(source: ConnectionGate, body: Node2D) -> void:
 func _remove_connection(source: ConnectionGate, body: Node2D) -> void:
 	#print("_add_connection: ", source, " ", body)
 	if body is ConnectionGate:
+		if get_parent() == body.get_parent().get_parent():
+			return # yes very dirty hack to not detect itself...
 		var connection_gate = body as ConnectionGate
 		if connection_gate.mode == Building.ConnectionType.SNAP:
 			return

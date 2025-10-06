@@ -1,19 +1,19 @@
 @tool
 class_name PatternResource extends Resource
 
-@export var north: Building.ConnectionType:
+@export var north: Building.ConnectionType = Building.ConnectionType.SNAP:
 	set(value):
 		north = value
 		_setup_name()
-@export var east: Building.ConnectionType:
+@export var east: Building.ConnectionType = Building.ConnectionType.SNAP:
 	set(value):
 		east = value
 		_setup_name()
-@export var south: Building.ConnectionType:
+@export var south: Building.ConnectionType = Building.ConnectionType.SNAP:
 	set(value):
 		south = value
 		_setup_name()
-@export var west: Building.ConnectionType:
+@export var west: Building.ConnectionType = Building.ConnectionType.SNAP:
 	set(value):
 		west = value
 		_setup_name()

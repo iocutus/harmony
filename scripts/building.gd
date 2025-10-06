@@ -7,19 +7,21 @@ enum ConnectionType {
 	INPUT, OUTPUT, SNAP
 }
 
+@export var call_setup_resource: bool = true
+
 @export var building_resource: AbstractBuildingResource = null:
 	set(value):
 		building_resource = value
-		if is_node_ready():
+		if is_node_ready() && call_setup_resource:
 			_setup_resource()
 
 @export var building_rotation: BuildingsUtils.BuildingRotation = BuildingsUtils.BuildingRotation.DOWN:
 	set(value):
-		if building_resource.has_rotation:
+		if building_resource != null and building_resource.has_rotation:
 			building_rotation = value
 		else:
 			building_rotation = BuildingsUtils.BuildingRotation.DOWN
-		if is_node_ready():
+		if is_node_ready() && call_setup_resource:
 			_setup_resource()
 
 @export var connection_scene: PackedScene
@@ -52,7 +54,7 @@ enum ConnectionType {
 @export var production_time: float = 0.0:
 	set(value):
 		production_time = value
-		if building_resource.production_time > 0:
+		if building_resource != null and building_resource.production_time > 0:
 			current_production_percentage = min(1, value / building_resource.production_time)
 		else:
 			current_production_percentage = -1
@@ -91,7 +93,7 @@ func _process(delta: float) -> void:
 func _setup_connections(connections: Dictionary[Vector2i, BuildingsUtils.BuildingRotation], connection_type: ConnectionType) -> void:
 	var nodes: Array[Node] = []
 	
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	
 	match connection_type:
 		ConnectionType.INPUT:
@@ -107,7 +109,7 @@ func _setup_connections(connections: Dictionary[Vector2i, BuildingsUtils.Buildin
 	for node in nodes:
 		print("clear ", nodes.size(), " nodes ", connection_type)
 		node.queue_free()
-		await get_tree().process_frame
+		#await get_tree().process_frame
 
 	match connection_type:
 		ConnectionType.INPUT:
@@ -123,7 +125,7 @@ func _setup_connections(connections: Dictionary[Vector2i, BuildingsUtils.Buildin
 	if connection_type != ConnectionType.INPUT and connection_type != ConnectionType.OUTPUT:
 		print("woot2")
 
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	var i: int = -1
 	for connection in connections:
 		i += 1
@@ -155,15 +157,19 @@ func _generate_connection_gate(tile_coordinate: Vector2i, connection_type: Conne
 		ConnectionType.OUTPUT:
 			outputs.add_child(connection_gate)
 			offset = - BuildingsUtils.connectionOffset(arrow_enum)
-	await get_tree().process_frame
+	#await get_tree().process_frame
 	connection_gate.position = connection_gate_position + offset
 	
 	print("add nodes to ", connection_type)
 
 func _setup_resource() -> void:
-	if background == null:
+	if background == null or building_resource == null:
 		print("skip _setup_resource")
 		return
+	
+	print("_setup_resource base")
+	print_stack()
+	
 	background.clear()
 	foreground.clear()
 	connectionIndicators.clear()
@@ -179,7 +185,7 @@ func _setup_resource() -> void:
 	var shapePoints: PackedVector2Array = tile_data.get_collision_polygon_points(1, 0)
 	shapeCollisionPolygon.set_deferred("polygon", shapePoints)
 	label.text = str(building_resource)
-	#_setup_connections(building_resource.input_locations, ConnectionType.INPUT)
+	_setup_connections(building_resource.input_locations, ConnectionType.INPUT)
 	_setup_connections(building_resource.output_locations, ConnectionType.OUTPUT)
 	connectionIndicators.visible = show_connection_indicators
 

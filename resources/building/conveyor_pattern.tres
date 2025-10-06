@@ -1,125 +1,27 @@
-[gd_resource type="Resource" script_class="BuildingPatternResource" load_steps=48 format=3 uid="uid://bhesmv2no106x"]
+[gd_resource type="Resource" script_class="BuildingPatternResource" load_steps=49 format=3 uid="uid://bhesmv2no106x"]
 
 [ext_resource type="Script" uid="uid://dubatf74dah3a" path="res://scripts/resource/pattern_resource.gd" id="1_nvby6"]
 [ext_resource type="Script" uid="uid://b5687u2nvgbnh" path="res://scripts/resource/pattern_value_resource.gd" id="2_lsuq7"]
 [ext_resource type="Script" uid="uid://dl88air746ik" path="res://scripts/resource/building_pattern_resource.gd" id="3_esot4"]
 [ext_resource type="Resource" uid="uid://cq400bi1w4f5r" path="res://resources/building/conveyor_straight.tres" id="3_vhba1"]
+[ext_resource type="Resource" uid="uid://cwi3xf6725e0" path="res://resources/building/conveyor_curve_clockwise.tres" id="4_vhba1"]
 [ext_resource type="Resource" uid="uid://cwi3xf6725e0" path="res://resources/building/conveyor_curve_counter_clockwise.tres" id="5_vhba1"]
 
-[sub_resource type="Resource" id="Resource_tgg08"]
-resource_name = "2 2 2 1"
+[sub_resource type="Resource" id="Resource_esot4"]
+resource_name = "2 2 2 2"
 script = ExtResource("1_nvby6")
-north = 2
-east = 2
-south = 2
-west = 1
 metadata/_custom_type_script = "uid://dubatf74dah3a"
 
-[sub_resource type="Resource" id="Resource_s7uph"]
-resource_name = "Conveyor Straight 3"
-script = ExtResource("2_lsuq7")
-building = ExtResource("3_vhba1")
-rotation = 3
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_ilj5l"]
-resource_name = "2 0 1 1"
-script = ExtResource("1_nvby6")
-north = 2
-south = 1
-west = 1
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_6l8jj"]
-resource_name = "Conveyor Straight 3"
-script = ExtResource("2_lsuq7")
-building = ExtResource("3_vhba1")
-rotation = 3
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_ggmir"]
-resource_name = "2 2 0 2"
-script = ExtResource("1_nvby6")
-north = 2
-east = 2
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_8t1u0"]
-resource_name = "Conveyor Straight 2"
-script = ExtResource("2_lsuq7")
-building = ExtResource("3_vhba1")
-rotation = 2
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_l7esw"]
-resource_name = "1 2 2 2"
-script = ExtResource("1_nvby6")
-north = 1
-east = 2
-south = 2
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_7k7pr"]
-resource_name = "Conveyor Straight 2"
-script = ExtResource("2_lsuq7")
-building = ExtResource("3_vhba1")
-rotation = 2
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_bu0jj"]
-resource_name = "2 2 2 0"
-script = ExtResource("1_nvby6")
-north = 2
-east = 2
-south = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_laac3"]
-resource_name = "Conveyor Straight 1"
-script = ExtResource("2_lsuq7")
-building = ExtResource("3_vhba1")
-rotation = 1
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_26ic8"]
-resource_name = "2 1 2 2"
-script = ExtResource("1_nvby6")
-north = 2
-east = 1
-south = 2
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_3n7nm"]
-resource_name = "Conveyor Straight 1"
-script = ExtResource("2_lsuq7")
-building = ExtResource("3_vhba1")
-rotation = 1
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_sdv6s"]
-resource_name = "2 2 1 2"
-script = ExtResource("1_nvby6")
-north = 2
-east = 2
-south = 1
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_ro31b"]
+[sub_resource type="Resource" id="Resource_yvhoa"]
 resource_name = "Conveyor Straight 0"
 script = ExtResource("2_lsuq7")
 building = ExtResource("3_vhba1")
 metadata/_custom_type_script = "uid://b5687u2nvgbnh"
 
 [sub_resource type="Resource" id="Resource_vhba1"]
-resource_name = "0 2 2 2"
+resource_name = "1 2 2 2"
 script = ExtResource("1_nvby6")
-east = 2
-south = 2
-west = 2
+north = 1
 metadata/_custom_type_script = "uid://dubatf74dah3a"
 
 [sub_resource type="Resource" id="Resource_y504i"]
@@ -128,221 +30,283 @@ script = ExtResource("2_lsuq7")
 building = ExtResource("3_vhba1")
 metadata/_custom_type_script = "uid://b5687u2nvgbnh"
 
-[sub_resource type="Resource" id="Resource_tkuyt"]
-resource_name = "2 2 0 1"
+[sub_resource type="Resource" id="Resource_sdv6s"]
+resource_name = "2 2 1 2"
 script = ExtResource("1_nvby6")
-north = 2
-east = 2
-west = 1
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_p1r7v"]
-resource_name = "Conveyor Curve Counter Clockwise 3"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-rotation = 3
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_wos30"]
-resource_name = "1 2 2 0"
-script = ExtResource("1_nvby6")
-north = 1
-east = 2
-south = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_cripj"]
-resource_name = "Conveyor Curve Counter Clockwise 2"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-rotation = 2
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_6c5t0"]
-resource_name = "0 1 2 2"
-script = ExtResource("1_nvby6")
-east = 1
-south = 2
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_2yrwm"]
-resource_name = "Conveyor Curve Counter Clockwise 1"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-rotation = 1
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_uj401"]
-resource_name = "2 0 1 2"
-script = ExtResource("1_nvby6")
-north = 2
-south = 1
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_8chc8"]
-resource_name = "Conveyor Curve Counter Clockwise 0"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_a44m7"]
-resource_name = "0 2 2 1"
-script = ExtResource("1_nvby6")
-east = 2
-south = 2
-west = 1
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_sbbxx"]
-resource_name = "Conveyor Curve Counter Clockwise 3"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-rotation = 3
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_b32k3"]
-resource_name = "1 0 2 2"
-script = ExtResource("1_nvby6")
-north = 1
-south = 2
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_qtk6v"]
-resource_name = "Conveyor Curve Counter Clockwise 2"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-rotation = 2
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_g5ufi"]
-resource_name = "2 1 0 2"
-script = ExtResource("1_nvby6")
-north = 2
-east = 1
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_0x78g"]
-resource_name = "Conveyor Curve Counter Clockwise 1"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-rotation = 1
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_3logo"]
-resource_name = "2 2 1 0"
-script = ExtResource("1_nvby6")
-north = 2
-east = 2
 south = 1
 metadata/_custom_type_script = "uid://dubatf74dah3a"
 
-[sub_resource type="Resource" id="Resource_xnmtd"]
-resource_name = "Conveyor Curve Counter Clockwise 0"
-script = ExtResource("2_lsuq7")
-building = ExtResource("5_vhba1")
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_cpsgp"]
-resource_name = "2 0 1 2"
-script = ExtResource("1_nvby6")
-north = 2
-south = 1
-west = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
-[sub_resource type="Resource" id="Resource_s5g7y"]
-resource_name = "Conveyor Straight 3"
+[sub_resource type="Resource" id="Resource_bnpx8"]
+resource_name = "Conveyor Straight 0"
 script = ExtResource("2_lsuq7")
 building = ExtResource("3_vhba1")
-rotation = 3
 metadata/_custom_type_script = "uid://b5687u2nvgbnh"
 
-[sub_resource type="Resource" id="Resource_scy6o"]
-resource_name = "1 2 0 2"
+[sub_resource type="Resource" id="Resource_dat15"]
+resource_name = "0 2 2 2"
 script = ExtResource("1_nvby6")
-north = 1
-east = 2
-west = 2
+north = 0
 metadata/_custom_type_script = "uid://dubatf74dah3a"
 
-[sub_resource type="Resource" id="Resource_ru01r"]
+[sub_resource type="Resource" id="Resource_q4mxv"]
 resource_name = "Conveyor Straight 2"
 script = ExtResource("2_lsuq7")
 building = ExtResource("3_vhba1")
 rotation = 2
 metadata/_custom_type_script = "uid://b5687u2nvgbnh"
 
-[sub_resource type="Resource" id="Resource_q4mxv"]
-resource_name = "2 1 2 0"
-script = ExtResource("1_nvby6")
-north = 2
-east = 1
-south = 2
-metadata/_custom_type_script = "uid://dubatf74dah3a"
-
 [sub_resource type="Resource" id="Resource_efdfx"]
-resource_name = "Conveyor Straight 1"
-script = ExtResource("2_lsuq7")
-building = ExtResource("3_vhba1")
-rotation = 1
-metadata/_custom_type_script = "uid://b5687u2nvgbnh"
-
-[sub_resource type="Resource" id="Resource_bnpx8"]
-resource_name = "0 2 1 2"
+resource_name = "1 2 0 2"
 script = ExtResource("1_nvby6")
-east = 2
-south = 1
-west = 2
+north = 1
+south = 0
 metadata/_custom_type_script = "uid://dubatf74dah3a"
 
-[sub_resource type="Resource" id="Resource_dat15"]
+[sub_resource type="Resource" id="Resource_scy6o"]
 resource_name = "Conveyor Straight 0"
 script = ExtResource("2_lsuq7")
 building = ExtResource("3_vhba1")
 metadata/_custom_type_script = "uid://b5687u2nvgbnh"
 
-[sub_resource type="Resource" id="Resource_yvhoa"]
-resource_name = "2 2 2 2"
+[sub_resource type="Resource" id="Resource_ru01r"]
+resource_name = "2 2 1 2"
 script = ExtResource("1_nvby6")
-north = 2
-east = 2
-south = 2
-west = 2
+south = 1
 metadata/_custom_type_script = "uid://dubatf74dah3a"
 
-[sub_resource type="Resource" id="Resource_cr6vg"]
+[sub_resource type="Resource" id="Resource_cpsgp"]
+resource_name = "Conveyor Straight 2"
+script = ExtResource("2_lsuq7")
+building = ExtResource("3_vhba1")
+rotation = 2
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_s5g7y"]
+resource_name = "0 2 1 2"
+script = ExtResource("1_nvby6")
+north = 0
+south = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_3logo"]
+resource_name = "Conveyor Straight 2"
+script = ExtResource("2_lsuq7")
+building = ExtResource("3_vhba1")
+rotation = 2
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_xnmtd"]
+resource_name = "2 2 2 0"
+script = ExtResource("1_nvby6")
+west = 0
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_g5ufi"]
 resource_name = "Conveyor Straight 3"
 script = ExtResource("2_lsuq7")
 building = ExtResource("3_vhba1")
 rotation = 3
 metadata/_custom_type_script = "uid://b5687u2nvgbnh"
 
+[sub_resource type="Resource" id="Resource_0x78g"]
+resource_name = "2 1 2 2"
+script = ExtResource("1_nvby6")
+east = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_b32k3"]
+resource_name = "Conveyor Straight 3"
+script = ExtResource("2_lsuq7")
+building = ExtResource("3_vhba1")
+rotation = 3
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_qtk6v"]
+resource_name = "2 1 2 0"
+script = ExtResource("1_nvby6")
+east = 1
+west = 0
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_a44m7"]
+resource_name = "Conveyor Straight 3"
+script = ExtResource("2_lsuq7")
+building = ExtResource("3_vhba1")
+rotation = 3
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_sbbxx"]
+resource_name = "2 0 2 2"
+script = ExtResource("1_nvby6")
+east = 0
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_uj401"]
+resource_name = "Conveyor Straight 1"
+script = ExtResource("2_lsuq7")
+building = ExtResource("3_vhba1")
+rotation = 1
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_8chc8"]
+resource_name = "2 2 2 1"
+script = ExtResource("1_nvby6")
+west = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_6c5t0"]
+resource_name = "Conveyor Straight 1"
+script = ExtResource("2_lsuq7")
+building = ExtResource("3_vhba1")
+rotation = 1
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_2yrwm"]
+resource_name = "2 0 2 1"
+script = ExtResource("1_nvby6")
+east = 0
+west = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_wos30"]
+resource_name = "Conveyor Straight 1"
+script = ExtResource("2_lsuq7")
+building = ExtResource("3_vhba1")
+rotation = 1
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_cripj"]
+resource_name = "2 2 0 1"
+script = ExtResource("1_nvby6")
+south = 0
+west = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_tkuyt"]
+resource_name = "Conveyor Curve Clockwise 0"
+script = ExtResource("2_lsuq7")
+building = ExtResource("4_vhba1")
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_p1r7v"]
+resource_name = "2 0 1 2"
+script = ExtResource("1_nvby6")
+east = 0
+south = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_ro31b"]
+resource_name = "Conveyor Curve Clockwise 1"
+script = ExtResource("2_lsuq7")
+building = ExtResource("4_vhba1")
+rotation = 1
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_26ic8"]
+resource_name = "0 1 2 2"
+script = ExtResource("1_nvby6")
+north = 0
+east = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_3n7nm"]
+resource_name = "Conveyor Curve Clockwise 2"
+script = ExtResource("2_lsuq7")
+building = ExtResource("4_vhba1")
+rotation = 2
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_bu0jj"]
+resource_name = "1 2 2 0"
+script = ExtResource("1_nvby6")
+north = 1
+west = 0
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_laac3"]
+resource_name = "Conveyor Curve Clockwise 3"
+script = ExtResource("2_lsuq7")
+building = ExtResource("4_vhba1")
+rotation = 3
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_l7esw"]
+resource_name = "2 1 0 2"
+script = ExtResource("1_nvby6")
+east = 1
+south = 0
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_7k7pr"]
+resource_name = "Conveyor Curve Counter Clockwise 0"
+script = ExtResource("2_lsuq7")
+building = ExtResource("5_vhba1")
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_ggmir"]
+resource_name = "1 0 2 2"
+script = ExtResource("1_nvby6")
+north = 1
+east = 0
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_8t1u0"]
+resource_name = "Conveyor Curve Counter Clockwise 1"
+script = ExtResource("2_lsuq7")
+building = ExtResource("5_vhba1")
+rotation = 1
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_ilj5l"]
+resource_name = "0 2 2 1"
+script = ExtResource("1_nvby6")
+north = 0
+west = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_6l8jj"]
+resource_name = "Conveyor Curve Counter Clockwise 2"
+script = ExtResource("2_lsuq7")
+building = ExtResource("5_vhba1")
+rotation = 2
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
+[sub_resource type="Resource" id="Resource_tgg08"]
+resource_name = "2 2 0 1"
+script = ExtResource("1_nvby6")
+south = 0
+west = 1
+metadata/_custom_type_script = "uid://dubatf74dah3a"
+
+[sub_resource type="Resource" id="Resource_s7uph"]
+resource_name = "Conveyor Curve Counter Clockwise 3"
+script = ExtResource("2_lsuq7")
+building = ExtResource("5_vhba1")
+rotation = 3
+metadata/_custom_type_script = "uid://b5687u2nvgbnh"
+
 [resource]
 script = ExtResource("3_esot4")
 pattern = Dictionary[ExtResource("1_nvby6"), ExtResource("2_lsuq7")]({
-SubResource("Resource_yvhoa"): SubResource("Resource_cr6vg"),
-SubResource("Resource_bnpx8"): SubResource("Resource_dat15"),
-SubResource("Resource_q4mxv"): SubResource("Resource_efdfx"),
-SubResource("Resource_scy6o"): SubResource("Resource_ru01r"),
-SubResource("Resource_cpsgp"): SubResource("Resource_s5g7y"),
-SubResource("Resource_3logo"): SubResource("Resource_xnmtd"),
-SubResource("Resource_g5ufi"): SubResource("Resource_0x78g"),
-SubResource("Resource_b32k3"): SubResource("Resource_qtk6v"),
-SubResource("Resource_a44m7"): SubResource("Resource_sbbxx"),
-SubResource("Resource_uj401"): SubResource("Resource_8chc8"),
-SubResource("Resource_6c5t0"): SubResource("Resource_2yrwm"),
-SubResource("Resource_wos30"): SubResource("Resource_cripj"),
-SubResource("Resource_tkuyt"): SubResource("Resource_p1r7v"),
-SubResource("Resource_vhba1"): SubResource("Resource_y504i"),
-SubResource("Resource_sdv6s"): SubResource("Resource_ro31b"),
-SubResource("Resource_26ic8"): SubResource("Resource_3n7nm"),
-SubResource("Resource_bu0jj"): SubResource("Resource_laac3"),
-SubResource("Resource_l7esw"): SubResource("Resource_7k7pr"),
-SubResource("Resource_ggmir"): SubResource("Resource_8t1u0"),
+SubResource("Resource_tgg08"): SubResource("Resource_s7uph"),
 SubResource("Resource_ilj5l"): SubResource("Resource_6l8jj"),
-SubResource("Resource_tgg08"): SubResource("Resource_s7uph")
+SubResource("Resource_ggmir"): SubResource("Resource_8t1u0"),
+SubResource("Resource_l7esw"): SubResource("Resource_7k7pr"),
+SubResource("Resource_bu0jj"): SubResource("Resource_laac3"),
+SubResource("Resource_26ic8"): SubResource("Resource_3n7nm"),
+SubResource("Resource_p1r7v"): SubResource("Resource_ro31b"),
+SubResource("Resource_cripj"): SubResource("Resource_tkuyt"),
+SubResource("Resource_2yrwm"): SubResource("Resource_wos30"),
+SubResource("Resource_8chc8"): SubResource("Resource_6c5t0"),
+SubResource("Resource_sbbxx"): SubResource("Resource_uj401"),
+SubResource("Resource_qtk6v"): SubResource("Resource_a44m7"),
+SubResource("Resource_0x78g"): SubResource("Resource_b32k3"),
+SubResource("Resource_xnmtd"): SubResource("Resource_g5ufi"),
+SubResource("Resource_s5g7y"): SubResource("Resource_3logo"),
+SubResource("Resource_ru01r"): SubResource("Resource_cpsgp"),
+SubResource("Resource_efdfx"): SubResource("Resource_scy6o"),
+SubResource("Resource_dat15"): SubResource("Resource_q4mxv"),
+SubResource("Resource_sdv6s"): SubResource("Resource_bnpx8"),
+SubResource("Resource_vhba1"): SubResource("Resource_y504i"),
+SubResource("Resource_esot4"): SubResource("Resource_yvhoa")
 })
